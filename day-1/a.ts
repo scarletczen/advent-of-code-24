@@ -1,11 +1,10 @@
 import { runSolution } from '../utils.ts';
-import * as _ from 'lodash';
+import _ from 'lodash';
 
 const log = (v) => console.dir(v, { depth: null });
 
 /** provide your solution as the return of this function */
 export async function day1a(data: string[]) {
-  console.log(data);
   return _.chain(data)
     .map((line) => line.split('   '))
     .unzip()
