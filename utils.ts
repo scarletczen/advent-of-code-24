@@ -2,7 +2,9 @@ import chalk from 'chalk';
 import { readFile } from 'fs/promises';
 import { join } from 'path';
 
-export async function runSolution(solution: (data: string[]) => any) {
+export async function runSolution(
+  solution: (data: string[]) => Promise<unknown>
+) {
   const data = await readData();
   const answer = await solution(data);
   console.log(chalk.bgGreen('Your Answer:'), chalk.green(answer));
@@ -24,4 +26,3 @@ export async function readData() {
 function createFileName(day: number, part: 'a' | 'b', dataSet?: string) {
   return join(`day-${day}`, `${part}.data${dataSet ? `.${dataSet}` : ''}.txt`);
 }
-
