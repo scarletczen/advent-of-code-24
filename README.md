@@ -1,4 +1,4 @@
-# ts-aoc-starter
+# Advent of Code 2024 TS Solutions
 
 ## Video On How To Use This Starter
 
@@ -11,26 +11,29 @@ Provide your solution to the first part of everyday in the `day-X/a.ts` file (wh
 `ts
 import { runSolution } from '../utils.ts';
 
-/** provide your solution as the return of this function */
+/\*_ provide your solution as the return of this function _/
 export async function day1a(data: string[]) {
-  console.log(data);
-  return 0;
+console.log(data);
+return 0;
 }
 
 await runSolution(day1a);
 `
 
 Copy and paste your unique actual data set into the `day-X/a.data.txt` file. To run your solution against this data set, you can run:
+
 - `nx day-X-a`
 - or `nx X-a`
 - or `nx X`.
 
 You can copy and paste the sample data given in the problem into the `day-X/a.data.sample.txt` file, and run it with the command:
+
 - `nx day-X-a-sample`
-- or `nx X-a-sample` 
+- or `nx X-a-sample`
 - or `nx X-sample`.
 
 If you want to provide an additional data set, you can create a file following the format: `day-X/a.data.{DATA_SET_NAME}.txt`. You can then run your solution against this data set with the command:
+
 - `nx day-X-a-{DATA_SET_NAME}`
 - or `nx X-a-{DATA_SET_NAME}`
 - or `nx X-{DATA_SET_NAME}`.
@@ -42,4 +45,3 @@ Usually part B builds on the solution for part A. Obviously, if it makes sense, 
 ## File Watching
 
 Every command above supports a `watch-` version of the command as well. For example, if you'd like to run your command: `nx day-1-a-sample` and have it re-run whenever a file is saved, you can run the command: `nx watch-day-1-a-sample`.
-
