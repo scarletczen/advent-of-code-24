@@ -9,9 +9,9 @@ export async function day1a(data: string[]) {
     .map((line) => line.split('   '))
     .unzip()
     .map((col) => col.map(Number))
-    .map((col) => col.sort((a, b) => a - b))
-    .thru((v) => _.zip(...v))
-    .map(([a, b]) => Math.abs(a - b))
+    .map((col) => col.sort((a, b) => a - b)) // Sort the columns
+    .thru((v) => _.zip(...v)) // match first element of first array with first element of next array
+    .map(([a, b]) => Math.abs(a - b)) // calculate distance
     .sum()
     .tap(log)
     .value();

@@ -8,8 +8,8 @@ export async function day1b(data: string[]) {
     .map((line) => line.split('   '))
     .unzip()
     .map((col) => col.map(Number))
-    .thru(([left, right]) =>
-      left.map((n) => right.filter((m) => m == n).length * n)
+    .thru(
+      ([left, right]) => left.map((n) => right.filter((m) => m == n).length * n) // occurrences of left array element in right array multiplied by the element
     )
     .sum()
     .tap(log)
