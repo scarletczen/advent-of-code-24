@@ -3,14 +3,17 @@ import { readFile } from 'fs/promises';
 import { join } from 'path';
 
 export async function runSolution(
-  solution: (data: string[]) => Promise<unknown>
+  solution: (data: string[] | string) => Promise<unknown>,
+  options?: {
+    rawFile: boolean;
+  }
 ) {
-  const data = await readData();
+  const data = await readData(options);
   const answer = await solution(data);
   console.log(chalk.bgGreen('Your Answer:'), chalk.green(answer));
 }
 
-export async function readData() {
+export async function readData(options?: { rawFile: boolean }) {
   const [_, fullPath, dataSet] = process.argv as
     | [string, string, string]
     | [string, string];
@@ -19,7 +22,13 @@ export async function readData() {
     .split('/')
     .map((x, i) => (i === 0 ? +x.split('-')[1] : x)) as [number, 'a' | 'b'];
   const fileName = createFileName(day, part, dataSet);
-  const data = (await readFile(fileName)).toString().split('\n');
+  let data: string | string[];
+  if (options?.rawFile) {
+    data = (await readFile(fileName)).toString();
+    return data;
+  } else {
+    data = (await readFile(fileName)).toString().split('\n');
+  }
   return data;
 }
 
