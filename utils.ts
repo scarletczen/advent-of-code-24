@@ -3,7 +3,7 @@ import { readFile } from 'fs/promises';
 import { join } from 'path';
 
 export async function runSolution(
-  solution: (data: string[] | string) => Promise<unknown>,
+  solution: (data: string[] | Buffer) => Promise<unknown>,
   options?: {
     rawFile: boolean;
   }
@@ -22,9 +22,9 @@ export async function readData(options?: { rawFile: boolean }) {
     .split('/')
     .map((x, i) => (i === 0 ? +x.split('-')[1] : x)) as [number, 'a' | 'b'];
   const fileName = createFileName(day, part, dataSet);
-  let data: string | string[];
+  let data: Buffer | string[];
   if (options?.rawFile) {
-    data = (await readFile(fileName)).toString();
+    data = await readFile(fileName);
     return data;
   } else {
     data = (await readFile(fileName)).toString().split('\n');

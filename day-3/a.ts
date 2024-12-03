@@ -35,8 +35,9 @@ function extractAndSumMul(token) {
 }
 
 /** provide your solution as the return of this function */
-export async function day3a(data: string) {
-  const operationTokens = data?.split(/(?=mul\(|do\(\)|don't\(\))/);
+export async function day3a(data: Buffer) {
+  const input = data?.toString();
+  const operationTokens = input?.split(/(?=mul\(|do\(\)|don't\(\))/);
   const partOneTotal = calculateTotal(operationTokens, false);
 
   return partOneTotal;
